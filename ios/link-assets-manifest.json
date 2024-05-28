@@ -1,0 +1,45 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Teachers-Bold.ttf",
+      "sha1": "d6c23a8580d9d27ca6a5acace600764b47904a69"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-BoldItalic.ttf",
+      "sha1": "4ae1169ea32388fbbe8bf3e934c663d0b67efd43"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-ExtraBold.ttf",
+      "sha1": "c45409f3d7401db163cebf44346a1c17a9b951b9"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-ExtraBoldItalic.ttf",
+      "sha1": "0c829706e39d721fa316a1021c11b71d9468aeda"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-Italic.ttf",
+      "sha1": "9f3a1380a120e4ad57a1ae9fd3b050a47aa68948"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-Medium.ttf",
+      "sha1": "b5b754c2949357f84b57e53cc60a2ec30c6dcb35"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-MediumItalic.ttf",
+      "sha1": "30258ba458011571cc66c20d4f7f11d3a4370f5a"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-Regular.ttf",
+      "sha1": "e29492808bd20e69d249c655d48b3bc52e62953d"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-SemiBold.ttf",
+      "sha1": "bee1de50288413a00dc909892518b063506153dc"
+    },
+    {
+      "path": "src/assets/fonts/Teachers-SemiBoldItalic.ttf",
+      "sha1": "74333b0d5c1734025a3a822ad8b62d0bb9fa2f9f"
+    }
+  ]
+}
