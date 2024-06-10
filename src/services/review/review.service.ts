@@ -5,9 +5,12 @@ import {BaseResponse} from '@/utils';
 import apiClient from '../api-client';
 
 export const reviewService = {
-  getProductReviews: async (productId: string) =>
+  getProductReviews: async (productId: string, query?: any) =>
     await apiClient.get<BaseResponse<IReview[]>>(
       API_ROUTES.REVIEW.GET_PRODUCT_REVIEWS.replace(':id', productId),
+      {
+        params: query,
+      },
     ),
   createReview: async (data: CreateReviewForm) =>
     await apiClient.post<BaseResponse<IReview>>(

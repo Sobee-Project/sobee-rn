@@ -1,9 +1,9 @@
 export const FONT_FAMILY = {
-  regular: 'Teachers-Regular',
-  medium: 'Teachers-Medium',
-  bold: 'Teachers-Bold',
-  semiBold: 'Teachers-SemiBold',
-  extraBold: 'Teachers-ExtraBold',
+  regular: 'Poppins-Regular',
+  medium: 'Poppins-Medium',
+  bold: 'Poppins-Bold',
+  semiBold: 'Poppins-SemiBold',
+  extraBold: 'Poppins-ExtraBold',
 };
 
 export const FONT_SIZE = {
@@ -58,79 +58,66 @@ export const TYPOGRAPHY = {
   h1: {
     fontFamily: FONT_FAMILY.bold,
     fontSize: FONT_SIZE.h1,
-    lineHeight: LINE_HEIGHT.h1,
     letterSpacing: LETTER_SPACING.h1,
   },
   h2: {
     fontFamily: FONT_FAMILY.bold,
     fontSize: FONT_SIZE.h2,
-    lineHeight: LINE_HEIGHT.h2,
     letterSpacing: LETTER_SPACING.h2,
   },
   h3: {
     fontFamily: FONT_FAMILY.bold,
     fontSize: FONT_SIZE.h3,
-    lineHeight: LINE_HEIGHT.h3,
     letterSpacing: LETTER_SPACING.h3,
   },
   h4: {
     fontFamily: FONT_FAMILY.semiBold,
     fontSize: FONT_SIZE.h4,
-    lineHeight: LINE_HEIGHT.h4,
     letterSpacing: LETTER_SPACING.h4,
   },
   h5: {
     fontFamily: FONT_FAMILY.semiBold,
     fontSize: FONT_SIZE.h5,
-    lineHeight: LINE_HEIGHT.h5,
     letterSpacing: LETTER_SPACING.h5,
   },
   h6: {
     fontFamily: FONT_FAMILY.semiBold,
     fontSize: FONT_SIZE.h6,
-    lineHeight: LINE_HEIGHT.h6,
     letterSpacing: LETTER_SPACING.h6,
   },
   sub1: {
     fontFamily: FONT_FAMILY.regular,
     fontSize: FONT_SIZE.sub1,
-    lineHeight: LINE_HEIGHT.sub1,
     letterSpacing: LETTER_SPACING.sub1,
   },
   sub2: {
     fontFamily: FONT_FAMILY.regular,
     fontSize: FONT_SIZE.sub2,
-    lineHeight: LINE_HEIGHT.sub2,
     letterSpacing: LETTER_SPACING.sub2,
   },
   body1: {
     fontFamily: FONT_FAMILY.regular,
     fontSize: FONT_SIZE.body1,
-    lineHeight: LINE_HEIGHT.body1,
     letterSpacing: LETTER_SPACING.body1,
   },
   body2: {
     fontFamily: FONT_FAMILY.regular,
     fontSize: FONT_SIZE.body2,
-    lineHeight: LINE_HEIGHT.body2,
     letterSpacing: LETTER_SPACING.body2,
   },
   button: {
     fontFamily: FONT_FAMILY.medium,
     fontSize: FONT_SIZE.button,
-    lineHeight: LINE_HEIGHT.button,
     letterSpacing: LETTER_SPACING.button,
   },
   caption: {
     fontFamily: FONT_FAMILY.regular,
     fontSize: FONT_SIZE.caption,
-    lineHeight: LINE_HEIGHT.caption,
     letterSpacing: LETTER_SPACING.caption,
   },
   overline: {
     fontFamily: FONT_FAMILY.regular,
     fontSize: FONT_SIZE.overline,
-    lineHeight: LINE_HEIGHT.overline,
     letterSpacing: LETTER_SPACING.overline,
   },
 } as const;

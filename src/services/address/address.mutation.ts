@@ -13,10 +13,9 @@ export const useCreateAddressMutation = () => {
     mutationFn: async (data: CreateAddressFormSchema) => {
       const res = await addressService.createAddress(data);
       if (res.data.success) {
-        queryClient.setQueryData(
-          [QUERY_KEY.ADDRESS.GET_ALL],
-          (oldData: IAddress[]) => [...oldData, res.data.data],
-        );
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEY.ADDRESS.GET_ALL],
+        });
       }
       return res.data;
     },
@@ -29,14 +28,9 @@ export const useUpdateAddressMutation = () => {
     mutationFn: async (data: UpdateAddressFormSchema) => {
       const res = await addressService.updateAddress(data._id, data);
       if (res.data.success) {
-        queryClient.setQueryData(
-          [QUERY_KEY.ADDRESS.GET_ALL],
-          (oldData: IAddress[]) => {
-            const index = oldData.findIndex(item => item._id === data._id);
-            oldData[index] = res.data.data;
-            return [...oldData];
-          },
-        );
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEY.ADDRESS.GET_ALL],
+        });
       }
       return res.data;
     },
@@ -49,10 +43,9 @@ export const useDeleteAddressMutation = () => {
     mutationFn: async (id: string) => {
       const res = await addressService.deleteAddress(id);
       if (res.data.success) {
-        queryClient.setQueryData(
-          [QUERY_KEY.ADDRESS.GET_ALL],
-          (oldData: IAddress[]) => oldData.filter(item => item._id !== id),
-        );
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEY.ADDRESS.GET_ALL],
+        });
       }
       return res.data;
     },

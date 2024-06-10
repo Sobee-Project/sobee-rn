@@ -4,7 +4,7 @@ import React from 'react';
 import {ClickOutsideProvider} from 'react-native-click-outside';
 import 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {ThemeProvider} from './context';
+import {SocketProvider, ThemeProvider} from './context';
 import {STORAGE} from './utils';
 
 const queryClient = new QueryClient({
@@ -19,15 +19,17 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
-    <ClickOutsideProvider>
-      <SafeAreaProvider style={{flex: 1}}>
-        <ThemeProvider storage={STORAGE}>
-          <QueryClientProvider client={queryClient}>
-            <ApplicationNavigator />
-          </QueryClientProvider>
-        </ThemeProvider>
-      </SafeAreaProvider>
-    </ClickOutsideProvider>
+    <SocketProvider>
+      <ClickOutsideProvider>
+        <SafeAreaProvider style={{flex: 1}}>
+          <ThemeProvider storage={STORAGE}>
+            <QueryClientProvider client={queryClient}>
+              <ApplicationNavigator />
+            </QueryClientProvider>
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </ClickOutsideProvider>
+    </SocketProvider>
   );
 };
 

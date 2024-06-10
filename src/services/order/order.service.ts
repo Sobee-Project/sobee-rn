@@ -10,8 +10,10 @@ import apiClient from '../api-client';
 export const orderService = {
   createOrder: async (data: CreateOrderFormSchema) =>
     await apiClient.post<BaseResponse<IOrder>>(API_ROUTES.ORDER.CREATE, data),
-  getOrders: async () =>
-    await apiClient.get<BaseResponse<IOrder[]>>(API_ROUTES.ORDER.GET_ORDERS),
+  getOrders: async (query?: any) =>
+    await apiClient.get<BaseResponse<IOrder[]>>(API_ROUTES.ORDER.GET_ORDERS, {
+      params: query,
+    }),
   getOrderById: async (id: string) =>
     await apiClient.get<BaseResponse<IOrder>>(
       API_ROUTES.ORDER.GET_ORDER.replace(':id', id),
@@ -33,5 +35,9 @@ export const orderService = {
   getOrderItems: async () =>
     await apiClient.get<BaseResponse<IOrderItem[]>>(
       API_ROUTES.ORDER.GET_ORDER_ITEMS,
+    ),
+  cancelOrder: async (id: string) =>
+    await apiClient.delete<BaseResponse<IOrder>>(
+      API_ROUTES.ORDER.CANCEL_ORDER.replace(':id', id),
     ),
 };

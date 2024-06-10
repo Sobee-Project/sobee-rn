@@ -20,7 +20,7 @@ const CategoryDetailScreen = ({
 
   const {data, isLoading, isError} = useGetCategoryByIdQuery(categoryId);
 
-  const products = useMemo(() => data?.data.products || [], [data]);
+  const products = useMemo(() => data?.data || [], [data]);
 
   return (
     <ScrollView

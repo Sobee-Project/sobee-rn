@@ -16,7 +16,7 @@ export const API_ROUTES = {
 
   PRODUCT: {
     GET_PRODUCTS: '/product',
-    GET_PUBLISHED_PRODUCTS: '/product/published',
+    GET_PUBLISHED_PRODUCTS: '/product',
     GET_DRAFT_PRODUCTS: '/product/draft',
     GET_POPULAR_PRODUCTS: '/product/popular',
     GET_BEST_SELLER_PRODUCTS: '/product/best-seller',
@@ -94,15 +94,19 @@ export const API_ROUTES = {
   },
   ORDER: {
     CREATE: '/order',
-    GET_ORDERS: '/order',
+    GET_ORDERS: '/order/customer',
     GET_ORDER: '/order/:id',
     ADD_ORDER_ITEM: '/order/item',
     UPDATE_ORDER_ITEM_QUANTITY: '/order/item/:id/quantity',
     DELETE_ORDER_ITEM: '/order/item/:id',
-    CANCEL_ORDER: '/order/:id/cancel',
+    CANCEL_ORDER: '/order/:id/status/cancel',
     GET_ORDER_ITEMS: '/order/item',
   },
   PAYMENT_METHODS: {
     GET_PAYMENT_METHODS: '/payment-method',
+  },
+  CHAT: {
+    CREATE_ROOM: '/chat-room',
+    GET_ROOM: '/chat-room/:id',
   },
 };

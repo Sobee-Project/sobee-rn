@@ -9,19 +9,16 @@ export const categoryService = {
       API_ROUTES.CATEGORY.GET_CATEGORIES,
     ),
   getCategoryById: async (id: string) =>
-    await apiClient.get<
-      BaseResponse<
-        ICategory & {
-          products: IProduct[];
-        }
-      >
-    >(API_ROUTES.CATEGORY.GET_CATEGORY.replace(':id', id)),
+    await apiClient.get<BaseResponse<IProduct[]>>(
+      API_ROUTES.CATEGORY.GET_CATEGORY.replace(':id', id),
+    ),
   getCategoryWithProducts: async () =>
     await apiClient.get<
       BaseResponse<
         {
           _id: string;
           name: string;
+          slug: string;
           products: IProduct[];
         }[]
       >

@@ -7,11 +7,13 @@ import React, {forwardRef, useState} from 'react';
 import {
   Keyboard,
   Pressable,
+  StyleProp,
   StyleSheet,
   Text,
   TextInput,
   TextInputProps,
   View,
+  ViewStyle,
 } from 'react-native';
 import {useClickOutside} from 'react-native-click-outside';
 
@@ -25,6 +27,7 @@ export type InputProps = {
   showBorder?: boolean;
   size?: ThemeSize;
   radius?: ThemeRadius;
+  containerStyle?: StyleProp<ViewStyle>;
 } & TextInputProps;
 
 const Input = forwardRef<TextInput, InputProps>(
@@ -39,6 +42,7 @@ const Input = forwardRef<TextInput, InputProps>(
       label,
       size = 'md',
       radius = 'md',
+      containerStyle,
       ...props
     },
     ref,
@@ -54,9 +58,12 @@ const Input = forwardRef<TextInput, InputProps>(
     return (
       <View
         ref={outsideRef}
-        style={{
-          gap: 8,
-        }}>
+        style={StyleSheet.flatten([
+          {
+            gap: 8,
+          },
+          containerStyle,
+        ])}>
         {label && (
           <Text
             style={[

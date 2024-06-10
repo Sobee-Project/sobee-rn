@@ -1,21 +1,11 @@
 import {ProductCard} from '@/components/card';
-import {Button, LabelItemList} from '@/components/common';
-import {DEFAULT_IMAGE} from '@/constants';
+import {LabelItemList} from '@/components/common';
 import {useTheme} from '@/context';
 import {useGetBrandByIdQuery} from '@/services';
 import {ApplicationScreenProps} from '@/types';
-import {APP_CONFIG, TYPOGRAPHY} from '@/utils';
-import {ExternalLink, Heart} from 'lucide-react-native';
+import {APP_CONFIG} from '@/utils';
 import React, {useEffect, useMemo} from 'react';
-import {
-  Image,
-  Linking,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const BrandDetailScreen = ({
@@ -29,18 +19,12 @@ const BrandDetailScreen = ({
     navigation.setOptions({
       headerTitle: name,
       headerTitleAlign: 'center',
-      headerRight: ({tintColor}) => (
-        <Pressable style={{marginRight: 20}}>
-          <Heart size={24} color={tintColor} />
-        </Pressable>
-      ),
     });
-  }, [name, navigation]);
+  }, [name, navigation, brandId]);
 
   const {data, isLoading, isError} = useGetBrandByIdQuery(brandId);
 
-  const products = useMemo(() => data?.data?.products || [], [data]);
-  const brand = useMemo(() => data?.data, [data]);
+  const products = useMemo(() => data?.data || [], [data]);
 
   return (
     <ScrollView
@@ -52,9 +36,10 @@ const BrandDetailScreen = ({
           height: 160,
           width: '100%',
           justifyContent: 'flex-end',
+          display: 'none',
         }}
         colors={[colors.base.primary, colors.primary.primary600]}>
-        <View
+        {/* <View
           style={StyleSheet.flatten([
             {
               borderColor: colors.default.default200,
@@ -121,10 +106,10 @@ const BrandDetailScreen = ({
               </Button>
             )}
           </View>
-        </View>
+        </View> */}
       </LinearGradient>
       <LabelItemList
-        style={{padding: 20, marginTop: 40}}
+        style={{padding: 20}}
         isLoading={isLoading}
         isError={isError}
         label={`All products of ${name} brand`}

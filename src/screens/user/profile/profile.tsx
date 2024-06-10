@@ -10,11 +10,13 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   ToastAndroid,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import MenuItem from './components/MenuItem';
 
 const ProfileScreen = ({navigation}: ApplicationScreenProps<'Profile'>) => {
   const {toggleTheme, colors, theme} = useTheme();
@@ -64,6 +66,7 @@ const ProfileScreen = ({navigation}: ApplicationScreenProps<'Profile'>) => {
             styles.card,
           ])}>
           <Image
+            resizeMode="contain"
             source={{uri: user?.avatar ?? DEFAULT_IMAGE}}
             style={{
               width: 100,
@@ -122,26 +125,46 @@ const ProfileScreen = ({navigation}: ApplicationScreenProps<'Profile'>) => {
         </View>
       </LinearGradient>
       <View style={{marginTop: 40, gap: 16, padding: 20}}>
-        <Button
+        <MenuItem
+          label="Address"
+          onPress={() => navigation.navigate('Address')}
+        />
+
+        <MenuItem
+          label="Change theme"
           onPress={toggleTheme}
-          color="primary"
-          endContent={
-            theme === 'dark' ? (
-              <Moon size={20} color={colors.white} strokeWidth={1.5} />
-            ) : (
-              <Sun size={20} color={colors.white} strokeWidth={1.5} />
-            )
-          }>
-          <Text
-            style={[
-              TYPOGRAPHY.button,
-              {
-                color: colors.white,
-              },
-            ]}>
-            Change theme
-          </Text>
-        </Button>
+          right={
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Switch
+                value={theme === 'dark'}
+                onValueChange={toggleTheme}
+                trackColor={{
+                  false: colors.default.default200,
+                  true: colors.primary.primary200,
+                }}
+                thumbColor={colors.base.primary}
+              />
+              {theme === 'dark' ? (
+                <Moon
+                  size={20}
+                  color={colors.layout.foreground}
+                  strokeWidth={1.5}
+                />
+              ) : (
+                <Sun
+                  size={20}
+                  color={colors.layout.foreground}
+                  strokeWidth={1.5}
+                />
+              )}
+            </View>
+          }
+        />
+
         <Button
           onPress={onPressLogout}
           color="transparent"

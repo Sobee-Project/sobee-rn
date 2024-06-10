@@ -1,5 +1,5 @@
 import {QUERY_KEY} from '@/constants';
-import {CreateQuestionForm} from '@/lib/form-schema';
+import {CreateQuestionForm, EditQuestionForm} from '@/lib/form-schema';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {questionService} from './question.service';
 
@@ -21,8 +21,8 @@ export const useCreateQuestionMutation = () => {
 export const useEditQuestionMutation = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (data: CreateQuestionForm) => {
-      const res = await questionService.createQuestion(data);
+    mutationFn: async (data: EditQuestionForm) => {
+      const res = await questionService.editQuestion(data._id, data);
       if (res.data.success) {
         queryClient.invalidateQueries({
           queryKey: [QUERY_KEY.QUESTION.GET_ALL],

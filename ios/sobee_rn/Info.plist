@@ -49,16 +49,11 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Teachers-Bold.ttf</string>
-		<string>Teachers-BoldItalic.ttf</string>
-		<string>Teachers-ExtraBold.ttf</string>
-		<string>Teachers-ExtraBoldItalic.ttf</string>
-		<string>Teachers-Italic.ttf</string>
-		<string>Teachers-Medium.ttf</string>
-		<string>Teachers-MediumItalic.ttf</string>
-		<string>Teachers-Regular.ttf</string>
-		<string>Teachers-SemiBold.ttf</string>
-		<string>Teachers-SemiBoldItalic.ttf</string>
+		<string>Poppins-Bold.ttf</string>
+		<string>Poppins-ExtraBold.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>

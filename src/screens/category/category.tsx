@@ -13,7 +13,7 @@ const CategoryScreen = ({navigation}: ApplicationScreenProps<'Category'>) => {
       style={{flex: 1}}
       contentContainerStyle={{padding: 20, gap: 20}}
       showsVerticalScrollIndicator={false}>
-      {categoryWithProducts.map(({name, products, _id}) => (
+      {categoryWithProducts.map(({name, products, _id, slug}) => (
         <LabelItemList
           isError={isError}
           key={_id}
@@ -22,7 +22,7 @@ const CategoryScreen = ({navigation}: ApplicationScreenProps<'Category'>) => {
           label={name}
           showNavigation
           onPressNavigation={() =>
-            navigation.navigate('CategoryDetail', {categoryId: _id, name})
+            navigation.navigate('CategoryDetail', {categoryId: slug, name})
           }
           renderItem={({item}) => (
             <ProductCard

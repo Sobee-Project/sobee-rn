@@ -26,7 +26,10 @@ const ProductCard = ({product, style}: ProductCardProps) => {
   const navigation = useNavigation<ApplicationNavigationProps>();
 
   const onPress = () => {
-    navigation.navigate('ProductDetail', {productId: product._id!});
+    navigation.navigate('ProductDetail', {
+      productId: product._id!,
+      name: product.name,
+    });
   };
 
   return (
@@ -44,14 +47,14 @@ const ProductCard = ({product, style}: ProductCardProps) => {
         style,
       ])}>
       <Image
-        source={{uri: product.thumbnail}}
+        source={{uri: product.thumbnail, width: 100, height: 100}}
         width={100}
         height={100}
         style={{
           width: '100%',
           height: 140,
         }}
-        resizeMode="cover"
+        resizeMode="contain"
       />
 
       <View style={{padding: 8, justifyContent: 'space-between'}}>
@@ -66,6 +69,16 @@ const ProductCard = ({product, style}: ProductCardProps) => {
               minHeight: 40,
             },
           ]}>
+          {product.isDiscount ? (
+            <Text
+              style={{
+                color: colors.base.warning,
+              }}>
+              [-{(product.discount || 0) * 100}%]{' '}
+            </Text>
+          ) : (
+            ''
+          )}
           {product.name}
         </Text>
         <View

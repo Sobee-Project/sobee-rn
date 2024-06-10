@@ -1,9 +1,9 @@
 import {QUERY_KEY} from '@/constants';
 import {
   CreateOrderFormSchema,
+  CreateOrderItemFormSchema,
   UpdateOrderItemQuantityFormSchema,
 } from '@/lib/form-schema';
-import {IOrder} from '@/lib/interfaces';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {orderService} from './order.service';
 
@@ -13,10 +13,29 @@ export const useCreateOrderMutation = () => {
     mutationFn: async (order: CreateOrderFormSchema) => {
       const res = await orderService.createOrder(order);
       if (res.data.success) {
-        queryClient.setQueryData(
-          [QUERY_KEY.ORDER.GET_ALL],
-          (oldData: IOrder[]) => [...oldData, res.data.data],
-        );
+        await Promise.all([
+          queryClient.invalidateQueries({
+            queryKey: [QUERY_KEY.ORDER.GET_ALL],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: [QUERY_KEY.ORDER.GET_ITEMS],
+          }),
+        ]);
+      }
+      return res.data;
+    },
+  });
+};
+
+export const useCreateOrderItemMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (data: CreateOrderItemFormSchema) => {
+      const res = await orderService.createOrderItem(data);
+      if (res.data.success) {
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEY.ORDER.GET_ITEMS],
+        });
       }
       return res.data;
     },
@@ -29,10 +48,9 @@ export const useRemoveOrderItemMutation = () => {
     mutationFn: async (id: string) => {
       const res = await orderService.removeOrderItem(id);
       if (res.data.success) {
-        queryClient.setQueryData(
-          [QUERY_KEY.ORDER.GET_ITEMS],
-          (oldData: IOrder[]) => oldData.filter(item => item._id !== id),
-        );
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEY.ORDER.GET_ITEMS],
+        });
       }
       return res.data;
     },
@@ -50,6 +68,21 @@ export const useUpdateOrderItemQuantityMutation = () => {
       if (res.data.success) {
         queryClient.invalidateQueries({
           queryKey: [QUERY_KEY.ORDER.GET_ITEMS],
+        });
+      }
+      return res.data;
+    },
+  });
+};
+
+export const useCancelOrderMutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const res = await orderService.cancelOrder(id);
+      if (res.data.success) {
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEY.ORDER.GET_ALL],
         });
       }
       return res.data;

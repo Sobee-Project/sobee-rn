@@ -9,7 +9,7 @@ export const useToggleFavoriteProduct = () => {
       const res = await productService.toggleFavoriteProduct(productId);
       if (res.data.success) {
         queryClient.invalidateQueries({
-          queryKey: [QUERY_KEY.PRODUCT.GET_FAVORITE, QUERY_KEY.PRODUCT.GET_ALL],
+          queryKey: [QUERY_KEY.PRODUCT.GET_FAVORITE],
         });
       }
       return res.data;

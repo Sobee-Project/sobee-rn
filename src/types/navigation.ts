@@ -1,3 +1,4 @@
+import {IAddress, IQuestion, IReview} from '@/lib/interfaces';
 import {NavigationProp} from '@react-navigation/native';
 import type {StackScreenProps} from '@react-navigation/stack';
 
@@ -10,27 +11,36 @@ export type ApplicationStackParamList = {
   Home: undefined;
   Cart: undefined;
   Profile: undefined;
-  Product: {productId: string; name: string};
   Search: undefined;
   Notifications: undefined;
   Category: undefined;
   CategoryDetail: {categoryId: string; name: string};
   Brand: undefined;
   BrandDetail: {brandId: string; name: string};
-  Checkout: {cartItems: any[]};
+  Checkout: undefined;
+  ShippingAddress: {
+    selectedAddress: string | undefined;
+    onChangeAddress: (addressId: string) => void;
+  };
   Order: undefined;
   OrderDetail: {orderId: string};
   Address: undefined;
+  AddressDetail: {
+    addressId?: string;
+    data?: IAddress;
+  };
   Payment: undefined;
   Settings: undefined;
   Chat: undefined;
-  Contact: {orderId: string};
+  Contact: {roomId: string};
   Refund: {orderId: string};
-  Review: {orderId: string};
+  Review: {orderId: string; data?: IReview};
   Voucher: undefined;
   VoucherDetail: {voucherId: string};
-  ProductDetail: {productId: string};
+  ProductDetail: {productId: string; name: string};
   ProductReview: {productId: string};
+  ProductQuestion: {productId: string};
+  AskQuestion: {productId: string; data?: IQuestion};
   Favorite: undefined;
 };
 

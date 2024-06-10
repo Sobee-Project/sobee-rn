@@ -4,6 +4,7 @@ export * from './auth';
 export * from './brand';
 export * from './card';
 export * from './category';
+export * from './chat';
 export * from './cloudinary';
 export * from './coupon';
 export * from './order';

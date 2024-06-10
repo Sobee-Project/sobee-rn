@@ -3,6 +3,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {useTheme} from '@/context';
 import {
+  AddressDetailScreen,
+  AddressScreen,
+  AskQuestionScreen,
   BrandDetailScreen,
   BrandScreen,
   CartScreen,
@@ -18,15 +21,16 @@ import {
   OrderDetailScreen,
   OrderRefundScreen,
   OrderReviewScreen,
-  OrderScreen,
   ProductDetailScreen,
+  ProductQuestionScreen,
+  ProductReviewScreen,
   RegisterScreen,
+  ShippingAddressScreen,
   SplashScreen,
-  VoucherDetailScreen,
 } from '@/screens';
 import SettingsScreen from '@/screens/settings/settings';
 import type {ApplicationStackParamList} from '@/types/navigation';
-import {FONT_FAMILY, FONT_SIZE, navigationRef} from '@/utils';
+import {APP_CONFIG, FONT_FAMILY, navigationRef} from '@/utils';
 import {StatusBar} from 'react-native';
 
 const Stack = createStackNavigator<ApplicationStackParamList>();
@@ -55,7 +59,8 @@ function ApplicationNavigator() {
             headerTitleStyle: {
               color: colors.white,
               fontFamily: FONT_FAMILY.semiBold,
-              fontSize: FONT_SIZE.h6,
+              fontSize: 16,
+              maxWidth: APP_CONFIG.SCREEN.WIDTH - 100,
             },
             headerTintColor: colors.white,
           }}
@@ -86,7 +91,17 @@ function ApplicationNavigator() {
           <Stack.Screen name="Chat" component={ChatScreen} />
           <Stack.Screen name="Cart" component={CartScreen} />
           <Stack.Screen name="Checkout" component={CheckoutScreen} />
+          <Stack.Screen
+            name="ShippingAddress"
+            component={ShippingAddressScreen}
+          />
           <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="ProductReview" component={ProductReviewScreen} />
+          <Stack.Screen
+            name="ProductQuestion"
+            component={ProductQuestionScreen}
+          />
+          <Stack.Screen name="AskQuestion" component={AskQuestionScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
           <Stack.Screen name="Favorite" component={FavoriteScreen} />
           <Stack.Screen name="Brand" component={BrandScreen} />
@@ -96,9 +111,9 @@ function ApplicationNavigator() {
             name="CategoryDetail"
             component={CategoryDetailScreen}
           />
-          <Stack.Screen name="VoucherDetail" component={VoucherDetailScreen} />
-          <Stack.Screen name="Order" component={OrderScreen} />
           <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
+          <Stack.Screen name="Address" component={AddressScreen} />
+          <Stack.Screen name="AddressDetail" component={AddressDetailScreen} />
           <Stack.Screen name="Contact" component={OrderContactScreen} />
           <Stack.Screen name="Refund" component={OrderRefundScreen} />
           <Stack.Screen name="Review" component={OrderReviewScreen} />
@@ -106,7 +121,6 @@ function ApplicationNavigator() {
       </NavigationContainer>
       <StatusBar
         barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-        backgroundColor={colors.base.primary}
       />
     </>
   );

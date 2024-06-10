@@ -4,9 +4,12 @@ import {BaseResponse} from '@/utils';
 import apiClient from '../api-client';
 
 export const productService = {
-  getProducts: async () =>
+  getProducts: async (query?: any) =>
     await apiClient.get<BaseResponse<IProduct[]>>(
       API_ROUTES.PRODUCT.GET_PUBLISHED_PRODUCTS,
+      {
+        params: query,
+      },
     ),
   getProduct: async (id: string) =>
     await apiClient.get<BaseResponse<IProduct>>(

@@ -7,13 +7,9 @@ export const brandService = {
   getAllBrands: async () =>
     await apiClient.get<BaseResponse<IBrand[]>>(API_ROUTES.BRAND.GET_BRANDS),
   getBrandById: async (id: string) =>
-    await apiClient.get<
-      BaseResponse<
-        IBrand & {
-          products: IProduct[];
-        }
-      >
-    >(API_ROUTES.BRAND.GET_BRAND.replace(':id', id)),
+    await apiClient.get<BaseResponse<IProduct[]>>(
+      API_ROUTES.BRAND.GET_BRAND.replace(':id', id),
+    ),
   getBrandyWithProducts: async () =>
     await apiClient.get<
       BaseResponse<

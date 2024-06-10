@@ -47,5 +47,9 @@ export const QUERY_KEY = {
   },
   REVIEW: {
     GET_ALL: 'REVIEW/GET_ALL',
+    GET_PRODUCT_REVIEW: 'REVIEW/GET_PRODUCT_REVIEW',
+  },
+  CHAT: {
+    GET_ROOM: 'CHAT/GET_ROOM',
   },
 };

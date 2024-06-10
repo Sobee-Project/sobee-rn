@@ -8,7 +8,14 @@ import {APP_CONFIG, STORAGE} from '@/utils';
 import {zodResolver} from '@hookform/resolvers/zod';
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {Pressable, ScrollView, Text, ToastAndroid, View} from 'react-native';
+import {
+  Pressable,
+  ScrollView,
+  StatusBar,
+  Text,
+  ToastAndroid,
+  View,
+} from 'react-native';
 
 const LoginScreen = ({navigation}: ApplicationScreenProps<'Login'>) => {
   const {colors} = useTheme();
@@ -149,6 +156,7 @@ const LoginScreen = ({navigation}: ApplicationScreenProps<'Login'>) => {
           </View>
         </View>
       </ScrollView>
+      <StatusBar backgroundColor={'transparent'} />
     </View>
   );
 };

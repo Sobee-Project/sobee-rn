@@ -16,7 +16,7 @@ const CategoryCard = ({category}: CategoryCardProps) => {
 
   const onPress = () => {
     navigation.navigate('CategoryDetail', {
-      categoryId: category._id!,
+      categoryId: category.slug!,
       name: category.name,
     });
   };

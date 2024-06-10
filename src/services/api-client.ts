@@ -1,7 +1,5 @@
-import {API_ROUTES} from '@/constants';
-import {APP_CONFIG, STORAGE, navigate} from '@/utils';
+import {APP_CONFIG, STORAGE} from '@/utils';
 import axios from 'axios';
-import {RefreshTokenResponse} from './auth/auth.dto';
 
 const apiClient = axios.create({
   baseURL: APP_CONFIG.API_URL,
@@ -25,43 +23,43 @@ apiClient.interceptors.request.use(
   },
 );
 
-apiClient.interceptors.response.use(
-  response => {
-    return response;
-  },
-  async error => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
-      const refreshToken = STORAGE.getString(
-        APP_CONFIG.STORAGE_KEY.REFRESH_TOKEN,
-      );
-      originalRequest._retry = true;
-      try {
-        const response = await apiClient.post<RefreshTokenResponse>(
-          API_ROUTES.AUTH.REFRESH_TOKEN,
-          {
-            refreshToken,
-          },
-        );
+// apiClient.interceptors.response.use(
+//   response => {
+//     return response;
+//   },
+//   async error => {
+//     const originalRequest = error.config;
+//     if (error.response.status === 401 && !originalRequest._retry) {
+//       const refreshToken = STORAGE.getString(
+//         APP_CONFIG.STORAGE_KEY.REFRESH_TOKEN,
+//       );
+//       originalRequest._retry = true;
+//       try {
+//         const response = await apiClient.post<RefreshTokenResponse>(
+//           API_ROUTES.AUTH.REFRESH_TOKEN,
+//           {
+//             refreshToken,
+//           },
+//         );
 
-        const {refreshToken: newRefreshToken, accessToken: newAccessToken} =
-          response.data.data;
+//         const {refreshToken: newRefreshToken, accessToken: newAccessToken} =
+//           response.data.data;
 
-        STORAGE.set(APP_CONFIG.STORAGE_KEY.ACCESS_TOKEN, newAccessToken);
-        STORAGE.set(APP_CONFIG.STORAGE_KEY.REFRESH_TOKEN, newRefreshToken);
+//         STORAGE.set(APP_CONFIG.STORAGE_KEY.ACCESS_TOKEN, newAccessToken);
+//         STORAGE.set(APP_CONFIG.STORAGE_KEY.REFRESH_TOKEN, newRefreshToken);
 
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        return apiClient(originalRequest);
-      } catch (err) {
-        STORAGE.delete(APP_CONFIG.STORAGE_KEY.ACCESS_TOKEN);
-        STORAGE.delete(APP_CONFIG.STORAGE_KEY.REFRESH_TOKEN);
-        STORAGE.delete(APP_CONFIG.STORAGE_KEY.USER_ID);
-        navigate('Login');
-      }
-    }
+//         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+//         return apiClient(originalRequest);
+//       } catch (err) {
+//         STORAGE.delete(APP_CONFIG.STORAGE_KEY.ACCESS_TOKEN);
+//         STORAGE.delete(APP_CONFIG.STORAGE_KEY.REFRESH_TOKEN);
+//         STORAGE.delete(APP_CONFIG.STORAGE_KEY.USER_ID);
+//         navigate('Login');
+//       }
+//     }
 
-    return Promise.reject(error);
-  },
-);
+//     return Promise.reject(error);
+//   },
+// );
 
 export default apiClient;

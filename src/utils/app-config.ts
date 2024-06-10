@@ -12,6 +12,9 @@ export const APP_CONFIG = {
   API_URL: __DEV__
     ? 'http://10.0.2.2:8000/api'
     : 'https://sobee-be.up.railway.app/api',
+  BASE_SOCKET_URL: __DEV__
+    ? 'http://10.0.2.2:8000'
+    : 'https://sobee-be.up.railway.app',
   SCREEN: {
     WIDTH: Dimensions.get('screen').width,
     HEIGHT: Dimensions.get('screen').height,

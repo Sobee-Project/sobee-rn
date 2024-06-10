@@ -1,4 +1,5 @@
 import {useTheme} from '@/context';
+import {useGetOrderItemsQuery} from '@/services';
 import {FONT_FAMILY, FONT_SIZE, TYPOGRAPHY} from '@/theme';
 import {ApplicationScreenProps} from '@/types';
 import {
@@ -13,6 +14,7 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabs = ({navigation}: ApplicationScreenProps<'Main'>) => {
   const {colors} = useTheme();
+  const {data} = useGetOrderItemsQuery();
   return (
     <Tab.Navigator
       tabBar={props => <CustomBottomTabBar {...props} />}
@@ -34,6 +36,24 @@ const BottomTabs = ({navigation}: ApplicationScreenProps<'Main'>) => {
             }}>
             <Pressable onPress={() => navigation.navigate('Cart')}>
               <ShoppingCart size={24} color={tintColor} strokeWidth={1.5} />
+              {data?.data?.length ? (
+                <View
+                  style={{
+                    position: 'absolute',
+                    top: -4,
+                    right: -4,
+                    backgroundColor: colors.base.danger,
+                    borderRadius: 8,
+                    width: 16,
+                    height: 16,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text style={[{color: colors.white}, TYPOGRAPHY.overline]}>
+                    {data.data.length}
+                  </Text>
+                </View>
+              ) : null}
             </Pressable>
             <Pressable onPress={() => navigation.navigate('Chat')}>
               <MessageCircle size={24} color={tintColor} strokeWidth={1.5} />
