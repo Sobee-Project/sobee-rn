@@ -1,79 +1,120 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Sobee Customer App
 
-# Getting Started
+### Table of Contents
 
-> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
 
-## Step 1: Start the Metro Server
+---
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### Project Overview
 
-To start Metro, run the following command from the _root_ of your React Native project:
+The Sobee Customer App is a comprehensive e-commerce platform designed to provide a seamless shopping experience for customers. The project integrates a robust recommendation system to enhance user engagement and facilitate personalized shopping experiences. This front-end repository focuses on the customer-facing side of the platform, offering a variety of features and functionalities that cater to the needs of both shoppers and sellers.
 
+### Features
+
+1. **User Authentication and Authorization**:
+
+   - Secure login and registration.
+   - Role-based access control.
+
+2. **Product Management**:
+
+   - Browse and search products.
+   - View detailed product information, including name, price, category, brand, description, and reviews.
+   - Add products to favorites.
+
+3. **Shopping Cart**:
+
+   - Add products to the shopping cart.
+   - Update product quantities.
+   - View cart summary and proceed to checkout.
+
+4. **Order Management**:
+
+   - Track order status.
+   - View order details.
+   - Contact sellers regarding orders.
+
+5. **Wishlist**:
+
+   - Add products to the wishlist for future reference.
+
+6. **User Profile Management**:
+
+   - Update personal information.
+   - Manage addresses and default shipping addresses.
+
+7. **Chat System**:
+
+   - Real-time chat between customers and sellers.
+   - View chat history and manage conversations.
+
+8. **Recommendation System**:
+
+   - Personalized product recommendations based on browsing and purchase history.
+  
+### Installation
+
+To set up the project locally, follow these steps:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/Sobee-Project/sobee-rn.git
+   cd sobee-rn
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   yarn install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   yarn start
+   ```
+4. **Choose platform**:
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+i - For ios development
+a - For android development
 ```
 
-## Step 2: Start your Application
+The application will be available at your emulator or physical device.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Usage
 
-### For Android
+Once the development server is running, you can start exploring the various features of the Sobee Customer App:
 
-```bash
-# using npm
-npm run android
+- **Browse Products**: Explore the product catalog, search for specific items, and view detailed product information.
+- **Manage Cart and Orders**: Add items to your cart, review your selections, and place orders. Track your orders and contact sellers if needed.
+- **Interact with Sellers**: Use the chat feature to communicate with sellers directly.
+- **Personalized Shopping**: Take advantage of personalized recommendations to discover new products.
 
-# OR using Yarn
-yarn android
-```
+### Contributing
 
-### For iOS
+We welcome contributions to improve the Sobee Customer Site. To contribute, follow these steps:
 
-```bash
-# using npm
-npm run ios
+1. **Fork the repository**.
+2. **Create a new branch**:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes and commit them**:
+   ```bash
+   git commit -m "Add your message"
+   ```
+4. **Push to the branch**:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. **Create a Pull Request**.
 
-# OR using Yarn
-yarn ios
-```
+### License
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
